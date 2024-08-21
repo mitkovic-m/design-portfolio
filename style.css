@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-size: 16px;
+    --text-color: #000;
+    --secondary-text-color: #999;
+    --font-family: "Arial", sans-serif;
+    --line-height: 1.6;
+    --padding: 4vw;
+    --background-color: #fff;
+    --border-color: #f2f2f2;
+    --image-border: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 100%;
+}
+
+.header {
+    padding: var(--padding);
+    padding-bottom: 0;
+}
+
+.header h1 {
+    font-weight: normal;
+    font-size: var(--font-size);
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    row-gap: 1px;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--padding);
+    padding: var(--padding);
+    background-color: var(--background-color);
+}
+
+.projectInfo {
+    max-width: 480px;
+    width: 100%;
+}
+
+.projectAttachments {
+    width: 100%;
+    position: relative;
+}
+
+.mediaItems {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: var(--padding);
+    row-gap: var(--padding);
+}
+
+.media {
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+    aspect-ratio: 1.77778 / 1;
+}
+
+.media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--image-border);
+    z-index: 10;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.media img, video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+}
+    
+
+@media only screen and (min-width: 1680px) {
+    :root {
+        --padding: calc(1680px * 0.04);
+        --font-size: 0.952vw;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .mediaItems {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+    }
+
+    .media {
+        width: calc(95% - (100vw - 480px) / 1.5);
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .media {
+        width: 95%;
+    }
+}
